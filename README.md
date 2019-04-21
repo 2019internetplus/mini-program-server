@@ -23,7 +23,7 @@
 * 歌单列表获取 
   * 请求地址
   
-  > GET https://api.sherlocklee.top/musiclists/v0.1/list?start=START&count=COUNT
+  > GET https://api.xumengli.cn/musiclists/v0.1/list?start=START&count=COUNT
   * 请求参数
   
   | 属性 | 类型 |必填|说明|
@@ -40,7 +40,7 @@
   | title | string | 歌单标题|
   * 请求样例
   ```http
-  https://api.sherlocklee.top/musiclists/v0.1/list?start=0&count=1
+  https://api.xumengli.cn/musiclists/v0.1/list?start=0&count=1
   
   ```
   * 响应样例 
@@ -61,7 +61,7 @@
 * 歌单推荐列表获取 
   * 请求地址
   
-  > GET https://api.sherlocklee.top/musiclists/v0.1/recommand?token=TOKEN
+  > GET https://api.xumengli.cn/musiclists/v0.1/recommand?token=TOKEN
   * 请求参数
   
   | 属性 | 类型 |必填|说明|
@@ -77,7 +77,7 @@
   | title | string | 歌单标题|
   * 请求样例
   ```http
-  https://api.sherlocklee.top/musiclists/v0.1/recommand?token=334hhjks34s4v
+  https://api.xumengli.cn/musiclists/v0.1/recommand?token=334hhjks34s4v
   
   ```
   * 响应样例 
@@ -99,7 +99,7 @@
 * 影单列表获取 
   * 请求地址
   
-  > GET https://api.sherlocklee.top/movielists/v0.1/list?start=START&count=COUNT
+  > GET https://api.xumengli.cn/movielists/v0.1/list?start=START&count=COUNT
   * 请求参数
   
   | 属性 | 类型 |必填|说明|
@@ -116,7 +116,7 @@
   | title | string | 影单标题|
   * 请求样例
   ```http
-  https://api.sherlocklee.top/movielists/v0.1/list?start=0&count=1
+  https://api.xumengli.cn/movielists/v0.1/list?start=0&count=1
   
   ```
   * 响应样例 
@@ -138,7 +138,7 @@
 * 影单推荐列表获取 
   * 请求地址
   
-  > GET https://api.sherlocklee.top/movielists/v0.1/recommand?token=TOKEN
+  > GET https://api.xumengli.cn/movielists/v0.1/recommand?token=TOKEN
   * 请求参数
   
   | 属性 | 类型 |必填|说明|
@@ -154,7 +154,7 @@
   | title | string | 影单标题|
   * 请求样例
   ```http
-  https://api.sherlocklee.top/movielists/v0.1/recommand?token=334hhjks34s4v
+  https://api.xumengli.cn/movielists/v0.1/recommand?token=334hhjks34s4v
   
   ```
   * 响应样例 
@@ -176,7 +176,7 @@
 * 歌单内容获取 
   * 请求地址
   
-  > GET https://api.sherlocklee.top/musiclist/v0.1/details?mlistid=ID
+  > GET https://api.xumengli.cn/musiclist/v0.1/details?mlistid=ID
   * 请求参数
   
   | 属性 | 类型 |必填|说明|
@@ -193,7 +193,7 @@
   | singer | string | 歌手|
   * 请求样例
   ```http
-  https://api.sherlocklee.top/musiclist/v0.1/details?mlistid=123
+  https://api.xumengli.cn/musiclist/v0.1/details?mlistid=123
   
   ```
   * 响应样例 
@@ -215,7 +215,7 @@
 * 影单内容获取 
   * 请求地址
   
-  > GET https://api.sherlocklee.top/moivelist/v0.1/details?mvlistid=ID
+  > GET https://api.xumengli.cn/moivelist/v0.1/details?mvlistid=ID
   * 请求参数
   
   | 属性 | 类型 |必填|说明|
@@ -233,7 +233,7 @@
   | director | string | 导演|
   * 请求样例
   ```http
-  https://api.sherlocklee.top/movielist/v0.1/details?mvlistid=123
+  https://api.xumengli.cn/movielist/v0.1/details?mvlistid=123
   
   ```
   * 响应样例 
