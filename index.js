@@ -111,6 +111,6 @@ app.get('/musiclist/v0.1/details', function(req, res){
             res.end(JSON.stringify(testData));
       }
 });
-var server = app.listen(8081, function(){
-      console.log("This server has been starting in http://%s:%s", server.address().address, server.address().port);
-})
+var server = app.listen(8081, "127.0.0.1", function(){
+      console.log("Server run: http://%s:%s", server.address().address, server.address().port);
+});
