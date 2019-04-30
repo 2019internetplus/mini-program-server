@@ -1,29 +1,39 @@
 # API参考 V0.1(Beta)
-
-* 歌单列表获取 
-  * 请求地址
+## APIs
+ * [歌单列表获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#歌单列表获取)
+ * [歌单推荐列表获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#歌单推荐列表获取)
+ * [影单列表获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#影单列表获取)
+ * [影单推荐列表获取 ](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#影单推荐列表获取)
+ * [歌单内容获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#歌单内容获取)
+ * [影单内容获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#影单内容获取)
+ * [添加歌曲](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#添加歌曲)
+ * [修改歌曲](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#修改歌曲)
+ * [删除歌曲](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#删除歌曲)
+## API详细 
+## 1. 歌单列表获取 
+  ### 1.1 请求地址
   
   > GET https://api.xumengli.cn/musiclists/v0.1/list?start=START&count=COUNT
-  * 请求参数
+  ### 1.2 请求参数
   
   | 属性 | 类型 |必填|说明|
   |-------|-----|----|---|
   | start | int | 否 | 偏移量，默认为0|
   | count | int | 是 | 返回资源个数 |
   
-  * 返回值 data[] JSON
+  ### 1.3 返回值 data[] JSON
   
   | 属性 | 类型 |  说明|
   |------|-----|------|
-  |mlistid| int | 歌单ID值|
+  |mlistid| int | 歌单id|
   | src | string | 歌单封面图片地址|
   | title | string | 歌单标题|
-  * 请求样例
+  ### 1.4 请求样例
   ```http
   https://api.xumengli.cn/musiclists/v0.1/list?start=0&count=1
   
   ```
-  * 响应样例 
+  ### 1.5 响应样例 
   
   ```json
   {
@@ -38,29 +48,29 @@
     ]
   }
   ```
-* 歌单推荐列表获取 
-  * 请求地址
+## 2. 歌单推荐列表获取 
+  ### 2.1 请求地址
   
   > GET https://api.xumengli.cn/musiclists/v0.1/recommand?token=TOKEN
-  * 请求参数
+  ### 2.2 请求参数
   
   | 属性 | 类型 |必填|说明|
   |-------|-----|----|---|
   | token | string | 是 | token值 |
   
-  * 返回值 data[] JSON
+  ### 2.3 返回值 data[] JSON
   
   | 属性 | 类型 |  说明|
   |------|-----|------|
-  |mlistid| int | 歌单ID值|
+  |mlistid| int | 歌单id|
   | src | string | 歌单封面图片地址|
   | title | string | 歌单标题|
-  * 请求样例
+  ### 2.4 请求样例
   ```http
   https://api.xumengli.cn/musiclists/v0.1/recommand?token=334hhjks34s4v
   
   ```
-  * 响应样例 
+  ### 2.5 响应样例 
   
   ```json
   {
@@ -76,30 +86,30 @@
   }
   ```  
   
-* 影单列表获取 
-  * 请求地址
+## 3. 影单列表获取 
+  ### 3.1 请求地址
   
   > GET https://api.xumengli.cn/movielists/v0.1/list?start=START&count=COUNT
-  * 请求参数
+  ### 3.2 请求参数
   
   | 属性 | 类型 |必填|说明|
   |-------|-----|----|---|
   | start | int | 否 | 偏移量，默认为0|
   | count | int | 是 | 返回资源个数 |
   
-  * 返回值 data[] JSON
+  ### 3.3 返回值 data[] JSON
   
   | 属性 | 类型 |  说明|
   |------|-----|------|
-  |mvlistid| int | 影单ID值|
+  |mvlistid| int | 影单id|
   | src | string | 影单封面图片地址|
   | title | string | 影单标题|
-  * 请求样例
+  ### 3.4 请求样例
   ```http
   https://api.xumengli.cn/movielists/v0.1/list?start=0&count=1
   
   ```
-  * 响应样例 
+  ### 3.5 响应样例 
   
   ```json
   {
@@ -115,29 +125,29 @@
   }
   ```
   
-* 影单推荐列表获取 
-  * 请求地址
+## 4. 影单推荐列表获取 
+  ### 4.1 请求地址
   
   > GET https://api.xumengli.cn/movielists/v0.1/recommand?token=TOKEN
-  * 请求参数
+  ### 4.2 请求参数
   
   | 属性 | 类型 |必填|说明|
   |-------|-----|----|---|
   | token | string | 是 | token值 |
   
-  * 返回值 data[] JSON
+  ### 4.3 返回值 data[] JSON
   
   | 属性 | 类型 |  说明|
   |------|-----|------|
-  |mvlistid| int | 影单ID值|
+  |mvlistid| int | 影单id|
   | src | string | 影单封面图片地址|
   | title | string | 影单标题|
-  * 请求样例
+  ### 4.4 请求样例
   ```http
   https://api.xumengli.cn/movielists/v0.1/recommand?token=334hhjks34s4v
   
   ```
-  * 响应样例 
+  ### 4.5 响应样例 
   
   ```json
   {
@@ -153,30 +163,30 @@
   }
   ```  
   
-* 歌单内容获取 
-  * 请求地址
+## 5. 歌单内容获取 
+  ### 5.1 请求地址
   
   > GET https://api.xumengli.cn/musiclist/v0.1/details?mlistid=ID
-  * 请求参数
+  ### 5.2 请求参数
   
   | 属性 | 类型 |必填|说明|
   |-------|-----|----|---|
   | mlistid | int | 是 | 歌单id |
   
-  * 返回值 data[] JSON
+  ### 5.3 返回值 data[] JSON
   
   | 属性 | 类型 |  说明|
   |------|-----|------|
-  |songid| int | 歌曲ID值|
+  |songid| int | 歌曲id|
   | src | string | 歌曲封面图片地址|
   | songname | string | 歌曲名称|
   | singer | string | 歌手|
-  * 请求样例
+  ### 5.4 请求样例
   ```http
   https://api.xumengli.cn/musiclist/v0.1/details?mlistid=123
   
   ```
-  * 响应样例 
+  ### 5.5 响应样例 
   
   ```json
   {
@@ -192,17 +202,17 @@
     ]
   }
   ```  
-* 影单内容获取 
-  * 请求地址
+## 6. 影单内容获取 
+  ### 6.1 请求地址
   
   > GET https://api.xumengli.cn/moivelist/v0.1/details?mvlistid=ID
-  * 请求参数
+  ### 6.2 请求参数
   
   | 属性 | 类型 |必填|说明|
   |-------|-----|----|---|
   | mvlistid | int | 是 | 影单id |
   
-  * 返回值 data[] JSON
+  ### 6.3 返回值 data[] JSON
   
   | 属性 | 类型 |  说明|
   |------|-----|------|
@@ -211,12 +221,12 @@
   | moviename | string | 电影名称|
   | actor | string | 演员|
   | director | string | 导演|
-  * 请求样例
+  ### 6.4 请求样例
   ```http
   https://api.xumengli.cn/movielist/v0.1/details?mvlistid=123
   
   ```
-  * 响应样例 
+  ### 6.5 响应样例 
   
   ```json
   {
@@ -233,27 +243,27 @@
     ]
   }
   ```  
-* 添加歌曲 
-  * 请求地址
+## 7 添加歌曲 
+  ### 7.1 请求地址
   
   > PUT https://api.xumengli.cn/res/songs/v0.1/add?songname=SONGNAME&singer=SINGER
-  * 请求参数
+  ### 7.2 请求参数
   
   | 属性 | 类型 |必填|说明|
   |-------|-----|----|---|
   | songname | string | 是 | 歌曲名称 |
   | singer   | string | 是 | 歌手名称|
  
-  * 返回值 data[] JSON
+  ### 7.3 返回值 data[] JSON
   
     空
    
-  * 请求样例
+  ### 7.4 请求样例
   ```http
   https://api.xumengli.cn/res/songs/v0.1/add?songname=四季&singer=陈奕迅
   
   ```
-  * 响应样例 
+  ### 7.5 响应样例 
   
   ```json
   {
@@ -265,32 +275,32 @@
   }
   ```  
   
-* 获取歌曲列表 
-  * 请求地址
+## 8. 获取歌曲列表 
+  ### 8.1 请求地址
   
   > GET https://api.xumengli.cn/res/songs/v0.1/get?start=START&count=COUNT
-  * 请求参数
+  ### 8.2 请求参数
   
   | 属性 | 类型 |必填|说明|
   |-------|-----|----|---|
   | start | int | 否 | 偏移量（默认为零） |
   | count | int | 是 | 数量 |
   
-  * 返回值 data[] JSON
+  ### 8.3 返回值 data[] JSON
   
   | 属性 | 类型 |  说明|
   |------|-----|------|
-  |songid| int | 歌曲ID|
+  |songid| int | 歌曲id|
   | songname | string | 歌曲名称|
   | singer | string | 歌手|
   
   
-  * 请求样例
+  ### 8.4 请求样例
   ```http
   https://api.xumengli.cn/res/songs/v0.1/get?start=0&count=2
   
   ```
-  * 响应样例 
+  ### 8.5 响应样例 
   
   ```json
   {
@@ -310,3 +320,65 @@
     ]
   }
   ```  
+ ## 9. 修改歌曲 
+  ### 9.1 请求地址
+  
+  > POST https://api.xumengli.cn/res/songs/v0.1/modify?songid=SONGID&songname=SONGNAME&singer=SINGER  
+  ### 9.2 请求参数
+  
+  | 属性 | 类型 |必填|说明|
+  |-------|-----|----|---|
+  | songid | int | 是| 歌曲id|
+  | songname | string | 是 | 歌曲名称 |
+  | singer   | string | 是 | 歌手名称|
+ 
+  ### 9.3 返回值 data[] JSON
+  
+    空
+   
+  ### 9.4 请求样例
+  ```http
+  https://api.xumengli.cn/res/songs/v0.1/modify?songid=1&songname=十年&singer=陈奕迅
+  
+  ```
+  ### 9.5 响应样例 
+  
+  ```json
+  {
+    "code": 100,
+    "message": "success",
+    "data": [
+ 
+    ]
+  }
+  ``` 
+  
+ ## 10. 删除歌曲 
+  ### 10.1 请求地址
+  
+  > DELETE https://api.xumengli.cn/res/songs/v0.1/del?songid=SONGID;
+  ### 10.2 请求参数
+  
+  | 属性 | 类型 |必填|说明|
+  |-------|-----|----|---|
+  | songid | int | 是| 歌曲id|
+ 
+  ### 10.3 返回值 data[] JSON
+  
+    空
+   
+  ### 10.4 请求样例
+  ```http
+  https://api.xumengli.cn/res/songs/v0.1/del?songid=3
+  
+  ```
+  ### 10.5 响应样例 
+  
+  ```json
+  {
+    "code": 100,
+    "message": "success",
+    "data": [
+ 
+    ]
+  }
