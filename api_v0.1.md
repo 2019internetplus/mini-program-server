@@ -1,14 +1,15 @@
 # API参考 V0.1(Beta)
 ## APIs
- * [歌单列表获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#歌单列表获取)
- * [歌单推荐列表获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#歌单推荐列表获取)
- * [影单列表获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#影单列表获取)
- * [影单推荐列表获取 ](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#影单推荐列表获取)
- * [歌单内容获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#歌单内容获取)
- * [影单内容获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#影单内容获取)
- * [添加歌曲](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#添加歌曲)
- * [修改歌曲](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#修改歌曲)
- * [删除歌曲](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#删除歌曲)
+ * [歌单列表获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#1-歌单列表获取)
+ * [歌单推荐列表获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#2-歌单推荐列表获取)
+ * [影单列表获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#3-影单列表获取)
+ * [影单推荐列表获取 ](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#4-影单推荐列表获取)
+ * [歌单内容获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#5-歌单内容获取)
+ * [影单内容获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#6-影单内容获取)
+ * [添加歌曲](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#7-添加歌曲)
+ * [获取歌曲列表](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#8-获取歌曲列表)
+ * [修改歌曲](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#9-修改歌曲)
+ * [删除歌曲](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#10-删除歌曲)
 ## API详细 
 ## 1. 歌单列表获取 
   ### 1.1 请求地址
