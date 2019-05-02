@@ -8,12 +8,12 @@
 					                   +---------------------------->|      filter     | 
 					                   |                             +-----------------+
                                                            |                                   +------------------+
-+--------------+             request               +---------------+                           |    Mental test   |
++--------------+             request               +---------------+                           |    mental test   |
 | mini-program | --------------------------------->| mini-program  |-------------------------->|      and         | 
 |    client    | <---------------------------------|    server     |---------------+           |  analysis system |	
 +--------------+             response              +---------------+               |           +------------------+
 										   |           +---------------+
-										   |           |      The      |
+										   |           |      the      |
 										   +---------->|    recommand  | 
 										   	       |     system    |
 											       +---------------+
@@ -21,6 +21,10 @@
                                                                                             
 
 ````
+* Components
+	* ```the fucking words filter``` filters the dirty words. Using tree maps to match the words is faster and accurater. The language is not only Chinese but also English. It helps us to create an active atmosphere amog people.
+	* ```mental test and anaysis system``` offers various simple mental tests, which can analyse your mental states in detail. We distinguish the classes into four parts, each of the these has corresponding recommended resources.
+	* ```the recommand system``` recommands users resources by mental test and user visited. The recommand database includes musics, movies and fictions.
 ## Deploy|部署
 ### Linux (Redhat or Debian and other linux or unix(unix like) os)
 * Get the whole project resources.
