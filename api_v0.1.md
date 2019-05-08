@@ -27,8 +27,9 @@
   | 属性 | 类型 |  说明|
   |------|-----|------|
   |mlistid| int | 歌单id|
-  | src | string | 歌单封面图片地址|
-  | title | string | 歌单标题|
+  | post | string | 歌单封面图片地址|
+  | mlist_name | string | 歌单标题|
+  | mlist_des | string |歌单描述|
   ### 1.4 请求样例
   ```http
   https://api.xumengli.cn/musiclists/v0.1/list?start=0&count=1
@@ -38,16 +39,17 @@
   
   ```json
   {
-     "code": 100,
-     "message": "success",
-     "data": [
+    "code": 100,
+    "message": "success",
+    "data": [
         {
-            "mlistid": 1000,
-            "src": "https://xxx.jpg",
-            "title": "test"
+            "mlistid": 1557302268,
+            "mlist_name": "我们",
+            "mlist_des": "",
+            "post": ""
         }
     ]
-  }
+}
   ```
 ## 2. 歌单推荐列表获取 
   ### 2.1 请求地址
