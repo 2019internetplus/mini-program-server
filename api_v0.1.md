@@ -340,7 +340,7 @@
   ### 9.1 请求地址
   
   > PUT https://api.xumengli.cn/kuakuaquan/v0.1/addcomment?kua_id=KUA_ID&comment_message=COMMENT_MESSAGE
-  ### 8.2 请求参数
+  ### 9.2 请求参数
   
   | 属性 | 类型 |必填|说明|
   |-------|-----|----|---|
