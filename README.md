@@ -41,10 +41,11 @@
 ```
 
 ## Open API
-### 错误码
+### 确认码
 | code | message|
 |------|--------|
 | 100|   success|
+| 101| is exsited|
 | 400|   index out of range|
 | 401| arguments error|
 | 404| source not found|
