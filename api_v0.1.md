@@ -7,6 +7,8 @@
  * [歌单内容获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#5-歌单内容获取)
  * [影单内容获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#6-影单内容获取)
  * [夸夸圈列表获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#7-夸夸圈列表获取)
+ * [夸夸圈点赞](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#8-夸夸圈点赞)
+ * [夸夸圈评论](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#9-夸夸圈评论)
 
 ## API详细 
 ## 1. 歌单列表获取 
@@ -245,17 +247,17 @@
   }
   ```  
 ## 7. 夸夸圈列表获取 
-  ### 1.1 请求地址
+  ### 7.1 请求地址
   
-  > GET https://api.xumengli.cn//kuakuaquan/v0.1/list?start=START&count=COUNT
-  ### 1.2 请求参数
+  > GET https://api.xumengli.cn/kuakuaquan/v0.1/list?start=START&count=COUNT
+  ### 7.2 请求参数
   
   | 属性 | 类型 |必填|说明|
   |-------|-----|----|---|
   | start | int | 否 | 偏移量，默认为0|
   | count | int | 是 | 返回资源个数 |
   
-  ### 1.3 返回值 data[] JSON
+  ### 7.3 返回值 data[] JSON
   
   | 属性 | 类型 |  说明|
   |------|-----|------|
@@ -268,12 +270,12 @@
   | comment_message| string| 评论内容|
   |  comment_time| int| 评论时间|
   | like_nicks| array(int)|点赞用户id数组|
-  ### 1.4 请求样例
+  ### 7.4 请求样例
   ```http
-  https://api.xumengli.cn//kuakuaquan/v0.1/list?start=0&count=1
+  https://api.xumengli.cn/kuakuaquan/v0.1/list?start=0&count=1
   
   ```
-  ### 1.5 响应样例 
+  ### 7.5 响应样例 
   
   ```json
   {
@@ -282,7 +284,7 @@
     "data": [
         {
             "kua_id": 1,
-            "head_pic": "http://static.xumengli.cn/minio/xinyou-static/head_pic1.png",
+            "head_pic": "http://static.xumengli.cn/xinyou-static/head_pic1.png",
             "context": "富强，民主，文明，和谐，公正",
             "b_color": "#000000",
             "pu_time": 1557659814,
@@ -304,3 +306,63 @@
     ]
   }
   ```
+  
+  ## 8. 夸夸圈点赞 
+  ### 8.1 请求地址
+  
+  > PUT https://api.xumengli.cn/kuakuaquan/v0.1/addlike?kua_id=KUA_ID&nick_id=NICK_ID
+  ### 8.2 请求参数
+  
+  | 属性 | 类型 |必填|说明|
+  |-------|-----|----|---|
+  | kua_id | int | 是 | 夸夸圈id|
+  | nick_id | int | 是 | 用户id |
+  
+  ### 8.3 返回值 data[] JSON
+  
+  空
+  ### 8.4 请求样例
+  ```http
+  https://api.xumengli.cn/kuakuaquan/v0.1/addlike?kua_id=1&nick_id=3
+  
+  ```
+  ### 8.5 响应样例 
+  
+  ```json
+  {
+    "state": 100,
+    "message": "success",
+    "data": []
+       
+  }
+  ```
+  ## 9. 夸夸圈评论 
+  ### 9.1 请求地址
+  
+  > PUT https://api.xumengli.cn/kuakuaquan/v0.1/addcomment?kua_id=KUA_ID&comment_message=COMMENT_MESSAGE
+  ### 8.2 请求参数
+  
+  | 属性 | 类型 |必填|说明|
+  |-------|-----|----|---|
+  | kua_id | int | 是 | 夸夸圈id|
+  | comment_message | string | 是 | 评论内容 |
+  
+  ### 9.3 返回值 data[] JSON
+  
+  空
+  ### 9.4 请求样例
+  ```http
+  https://api.xumengli.cn/kuakuaquan/v0.1/addcomment?kua_id=1&comment_message=加油呀
+  
+  ```
+  ### 9.5 响应样例 
+  
+  ```json
+  {
+    "state": 100,
+    "message": "success",
+    "data": []
+       
+  }
+  ```
+  
