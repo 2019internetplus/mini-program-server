@@ -20,6 +20,8 @@ const err =  require("./lib/err");
  * +-----+-------------------+
  * | 100 | success           |
  * +-----+-------------------+
+ * | 101 | is exsited        |
+ * +-----+-------------------+
  * | 404 | source not found  |
  * +-----+-------------------+
  * | 400 | index out of range|
@@ -140,6 +142,26 @@ app.get('/musiclist/v0.1/details', function(req, res){
       }
 });
 
+
+app.get('/fictionlists/v0.1/list', function(req, res){
+      if(req.query.count == undefined) res.end(err.err401());
+      else {
+            const start = req.query.start || 0;
+           mysqlOp.getFictionsList(start, req.query.count).then((value) =>{
+                  if(value.state == "Ok"){
+                        const resData = {
+                              code: 100,
+                              messgae: "success",
+                              data: value.info
+                        };
+                        res.end(JSON.stringify(resData));
+                  }
+           }).catch((e)=>{
+                 console.err(e);
+                 res.end(err.err402);
+           });
+      }
+});
 
 
 
@@ -263,8 +285,26 @@ app.put('/res/mvlist/v0.1/add', function(req, res){
       }
 });
 
-
-
+// add new fiction
+app.put('/res/flist/v0.1/new', function(req, res){
+      if(req.query.title == undefined || req.query.content == undefined) res.end(err.err401());
+      else{
+          
+            mysqlOp.addFiction(req.query.title, req.query.content).then((value)=>{
+                  if(value.state == "Ok"){
+                        const resData = {
+                              code: 100,
+                              messgae: "success",
+                              data: []
+                        };
+                        res.end(JSON.stringify(resData));
+                  }
+            }).catch((e)=>{
+                  console.log(e);
+                  res.end(err.err402());
+            });
+      }
+});
 /* kuakua quan */
 app.put('/kuakuaquan/v0.1/new', function(req, res){
       if(req.query.context == undefined) res.end(err.err401());
@@ -351,6 +391,26 @@ app.put('/kuakuaquan/v0.1/addlike', function(req, res){
       }
 });
 
+app.delete('/kuakuaquan/v0.1/cancellike', function(req, res){
+      
+      if(req.query.nick_id == undefined || req.query.kua_id == undefined) res.end(err.err401());
+      else {
+            mysqlOp.cancelLikeKua(req.query.kua_id, req.query.nick_id).then((value)=>{
+                        if(value.state == "Ok"){
+                              const resData = {
+                                    code: 100,
+                                    message: "success",
+                                    data: value.info
+                              };
+                              res.end(JSON.stringify(resData));
+                        }
+            }).catch((e)=>{
+                        console.log(e);
+                        res.end(err.err402);
+            });
+      }
+});
+
 app.put('/kuakuaquan/v0.1/addcomment', function(req, res){
       if(req.query.kua_id == undefined || req.query.comment_message == undefined) res.end(err.err401());
       else {
@@ -360,16 +420,19 @@ app.put('/kuakuaquan/v0.1/addcomment', function(req, res){
                   return mysqlOp.addCommentToKua(req.query.kua_id, req.query.comment_message);
                   else {
                         res.end(err.err404);
+                        
                   }      
             })
             .then((value)=>{
                   //console.log(value);
-                  const resData = {
-                        state: 100,
-                        message: "success",
-                        data: []
+                  if(value != undefined){
+                        const resData = {
+                              state: 100,
+                              message: "success",
+                              data: []
+                        }
+                        res.end(JSON.stringify(resData));
                   }
-                  res.end(JSON.stringify(resData));
                   
             })
             .catch((e)=>{

@@ -9,6 +9,7 @@
  * [夸夸圈列表获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#7-夸夸圈列表获取)
  * [夸夸圈点赞](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#8-夸夸圈点赞)
  * [夸夸圈评论](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#9-夸夸圈评论)
+ * [夸夸圈取消点赞](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#10-夸夸圈取消点赞)
 
 ## API详细 
 ## 1. 歌单列表获取 
@@ -366,3 +367,32 @@
   }
   ```
   
+  ## 10. 夸夸圈取消点赞
+  ### 10.1 请求地址
+  
+  > PUT https://api.xumengli.cn/kuakuaquan/v0.1/cancellike?kua_id=KUA_ID&nick_id=NICK_ID
+  ### 10.2 请求参数
+  
+  | 属性 | 类型 |必填|说明|
+  |-------|-----|----|---|
+  | kua_id | int | 是 | 夸夸圈id|
+  | nick_id | int | 是 | 用户id |
+  
+  ### 10.3 返回值 data[] JSON
+  
+  空
+  ### 10.4 请求样例
+  ```http
+  https://api.xumengli.cn/kuakuaquan/v0.1/cancellike?kua_id=1&nick_id=3
+  
+  ```
+  ### 10.5 响应样例 
+  
+  ```json
+  {
+    "state": 100,
+    "message": "success",
+    "data": []
+       
+  }
+  ```
