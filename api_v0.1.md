@@ -370,7 +370,7 @@
   ## 10. 夸夸圈取消点赞
   ### 10.1 请求地址
   
-  > PUT https://api.xumengli.cn/kuakuaquan/v0.1/cancellike?kua_id=KUA_ID&nick_id=NICK_ID
+  > DELETE https://api.xumengli.cn/kuakuaquan/v0.1/cancellike?kua_id=KUA_ID&nick_id=NICK_ID
   ### 10.2 请求参数
   
   | 属性 | 类型 |必填|说明|
