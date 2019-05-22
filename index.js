@@ -71,6 +71,39 @@ app.put("/test/v0.1/add", function(req, res){
                         });
                   }
             }
+});
+
+app.get("/soulsoup/v0.1/get", function(req, res){
+      mysqlOp.getSoulSoup().then((value)=>{
+            if(value.state == "Ok"){
+                  console.log(value);
+                  const response = {
+                        code: 100,
+                        message: "success",
+                        data: value.info
+                  };
+                  res.end(JSON.stringify(response));
+            }
+      })
+});
+app.put("/soulsoup/v0.1/add", function(req, res){
+      if(req.query.imgsrc == undefined){
+            res.end(err.err401());
+      }else{
+
+            mysqlOp.addSoulSoup(req.query.imgsrc).then((value)=>{
+                  if(value.state == "Ok"){
+                        console.log(value);
+                        const response = {
+                              code: 100,
+                              message: "success",
+                              data: value.info
+                        };
+                        res.end(JSON.stringify(response));
+                  }
+            })
+      }
+      
 })
 var server = app.listen(8081, "127.0.0.1", function(){
       console.log("Server run: http://%s:%s", server.address().address, server.address().port);
