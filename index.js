@@ -2,8 +2,11 @@
 
 const express = require("express");
 var app = express();
+var bodyParser = require("body-parser");
+
 
 var mysqlOp = require("./lib/mysqlop"); 
+var user = require("./lib/user");
 const err =  require("./lib/err");
 /***
  *  {
@@ -102,6 +105,34 @@ app.put("/soulsoup/v0.1/add", function(req, res){
                         res.end(JSON.stringify(response));
                   }
             })
+      }
+      
+})
+
+
+//user login
+app.use(bodyParser.json());
+
+app.post("/user/v0.1/login", function(req, res){
+      if(req.body.code === undefined){
+            res.end(err.err401());
+      }else{
+            user.userLogin(req.body.code).then(value =>{
+                  return user.addNewUser(value);
+            }).then(value => {
+                  console.log(value);
+                  const session = user.addUserSeesion(value);
+                  const resData = {
+                        code: 100,
+                        message: "success",
+                        openid: session.openId,
+                        token: session.token
+                  };
+                  res.end(JSON.stringify(resData));
+            }).catch(e => {
+                  console.log(e);
+                  res.end(err.err403());
+            });
       }
       
 })
