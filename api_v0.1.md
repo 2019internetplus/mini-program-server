@@ -252,7 +252,7 @@
 }
   ```
   
-  ## 6. 添加反馈
+  ## 6. 提交反馈
   ### 6.1 请求地址
   
   > PUT https://api.xumengli.cn/faceback/v0.1/add?openid=OPENID&message=MESSAGE&token=TOKEN
