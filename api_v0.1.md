@@ -5,6 +5,9 @@
  * [心灵鸡汤获取](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#2-心灵鸡汤获取)
  
  * [手动添加心情值](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#3-手动添加心情值)
+ * [上传心情测试数据](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#4-上传心情测试数据)
+ * [获取心情数据](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#5-获取心情数据)
+ * [提交反馈](https://github.com/2019internetplus/mini-program-server/blob/master/api_v0.1.md#6-提交反馈)
 ## API详细 
 ## 1. 情绪测试获取
   ### 1.1 请求地址
@@ -134,7 +137,7 @@
   | 属性 | 类型 |  说明|
   |------|-----|------|
   | token | string | token值|
-  | commit| int | 提交(0，首次， 1，非首次)|
+  | commit| int | 提交(0，当日首次， 1，非当日首次)|
   | openid | int | openid值|
   | input_value | int | 心情值|
   | message | string | 消息 |
@@ -147,10 +150,133 @@
 
   ### 3.4 请求样例
   ```http
-  https://api.xumengli.cn/addInputValue?token=1558858993&commit=1&openid=o7K0Z48OkwZi0LxTInXWGwdWlizM&input_value=91&message=helloworld
+  https://api.xumengli.cn/em/v0.1/addInputValue?token=1558858993&commit=1&openid=o7K0Z48OkwZi0LxTInXWGwdWlizM&input_value=91&message=helloworld
   
   ```
   ### 3.5 响应样例 
+  
+  ```json
+  {
+    "code": 100,
+    "message": "success",
+    "data": []
+ }
+  ```
+
+## 4. 上传心情测试数据
+  ### 4.1 请求地址
+  
+  > PUT https://api.xumengli.cn/em/v0.1/addTestValue?token=TOKEN&commit=COMMIT&openid=OPENID&test_value=INPUT_VALUE&self_affirm=SELF_AFFIRM&anti_anxiety=ANTI_ANXIETY&anti_melancholy=ANTI_MELANCHAOLY
+  ### 4.2 请求参数
+  
+  | 属性 | 类型 |  说明|
+  |------|-----|------|
+  | token | string | token值|
+  | commit| int | 提交(0，当日首次， 1，非当日首次)|
+  | openid | int | openid值|
+  | test_value | int | 心情值(百分制)|
+  | self_affirm | int | 自我感知(百分制，最高40)|
+  | anti_anxiety| int | 抗焦虑(百分制, 最高30)|
+  | anti_melancholy| int | 抗忧郁(百分制，最高30)|
+  
+  
+  ### 4.3 返回值 data[] JSON
+  
+  无
+
+
+  ### 4.4 请求样例
+  ```http
+  https://api.xumengli.cn/em/v0.1/addTestValue?token=1558939295&commit=1&openid=o7K0Z48OkwZi0LxTInXWGwdWlizM&test_value=100&self_affirm=40&anti_anxiety=30&anti_melancholy=30
+  
+  ```
+  ### 4.5 响应样例 
+  
+  ```json
+  {
+    "code": 100,
+    "message": "success",
+    "data": []
+ }
+  ```
+  
+  ## 5. 获取心情数据
+  ### 5.1 请求地址
+  
+  > GET https://api.xumengli.cn/reports/v0.1/get?openid=OPENID&token=TOKEN&start=START&count=COUNT
+  ### 5.2 请求参数
+  
+  | 属性 | 类型 |  说明|
+  |------|-----|------|
+  | token | string | token值|
+  | openid | int | openid值|
+  | start | int | 偏移量|
+  | count | int | 数目 |
+  
+  
+  ### 5.3 返回值 data[] JSON
+  
+  | 属性 | 类型 |  说明|
+  |------|-----|------|
+  | total_value | int | 总情绪值(百分制)|
+  | input_value | int | 输入的情绪值(百分制)|
+ | test_value | int | 心情值(百分制)|
+  | self_affirm | int | 自我感知(百分制，最高40)|
+  | anti_anxiety| int | 抗焦虑(百分制, 最高30)|
+  | anti_melancholy| int | 抗忧郁(百分制，最高30)|
+
+
+  ### 5.4 请求样例
+  ```http
+  https://api.xumengli.cn/reports/v0.1/get?openid=o7K0Z48OkwZi0LxTInXWGwdWlizM&token=1558939295&start=0&count=2
+  
+  ```
+  ### 5.5 响应样例 
+  
+  ```json
+  {
+    "code": 100,
+    "message": "success",
+    "data": [
+        {
+            "total_value": 92,
+            "input_value": 90,
+            "test_value": 100,
+            "self_affirm": 40,
+            "anti_anxiety": 30,
+            "anti_melancholy": 30,
+            "message": "helloworld",
+            "time": 1558942065
+        }
+    ]
+}
+  ```
+  
+  ## 6. 添加反馈
+  ### 6.1 请求地址
+  
+  > PUT https://api.xumengli.cn/faceback/v0.1/add?openid=OPENID&message=MESSAGE&token=TOKEN
+  ### 6.2 请求参数
+  
+  | 属性 | 类型 |  说明|
+  |------|-----|------|
+  | token | string | token值|
+  | openid | int | openid值|
+  | message | string | 反馈消息|
+
+  
+  
+  ### 6.3 返回值 data[] JSON
+  
+  无
+
+
+  ### 6.4 请求样例
+  ```http
+  https://api.xumengli.cn/faceback/v0.1/add?openid=o7K0Z48OkwZi0LxTInXWGwdWlizM&message=hi&token=1558939295
+  
+  ```
+  ### 6.5 响应样例 
   
   ```json
   {
