@@ -190,15 +190,46 @@ app.put('/em/v0.1/addTestValue', function(req, res){
       }
 });
 
-// add faceback
-// test https://api.xumengli.cn/faceback/v0.1/add?openid=o7K0Z48OkwZi0LxTInXWGwdWlizM&message=hi&token=1558939295
-app.put('/faceback/v0.1/add', function(req, res){
+// get today emotion value
+// test https://api.xumengli.cn/em/v0.1/getToday?token=TOKEN&openid=OPENID
+app.get('/em/v0.1/getToday', function(req, res){
+      if(req.query.token == undefined || req.query.openid == undefined){
+            res.end(res.end(err.err401()));
+      }else{
+            user.tokenValid(req.query.openid, req.query.token).then((value) => {
+                  if(value){
+                        //do query
+                        return mysqlOp.getTodayEmotionValue(req.query.openid);
+                  }else{
+                        res.end(err.err405());
+                        return null;
+                  }
+            }).then(value => {
+                  if(!value) return;
+                  if(value.state == "Ok"){
+                        const resData = {
+                              code : 100,
+                              message : 'success',
+                              data: value.info
+                        };
+
+                        res.end(JSON.stringify(resData));
+                  }
+            }).catch(e => {
+                  console.log(e);
+                  res.end(err.err402());
+            })
+      }
+});
+// add feedback
+// test https://api.xumengli.cn/feedback/v0.1/add?openid=o7K0Z48OkwZi0LxTInXWGwdWlizM&message=hi&token=1558939295
+app.put('/feedback/v0.1/add', function(req, res){
       if(req.query.openid == undefined || req.query.token == undefined || req.query.message == undefined){
             res.end(err.err401());
       }else{
             user.tokenValid(req.query.openid, req.query.token).then((value) => {
                   if(value){
-                        return mysqlOp.addFaceback(req.query.openid, req.query.message);
+                        return mysqlOp.addFeedback(req.query.openid, req.query.message);
                   }else{
                         res.end(err.err405());
                   }
