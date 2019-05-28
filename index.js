@@ -221,6 +221,31 @@ app.get('/em/v0.1/getToday', function(req, res){
             })
       }
 });
+
+// get all values
+// test https://api.xumengli.cn/em/v0.1/getAll
+app.get('/em/v0.1/getAll', function(req, res){
+      if(req.query.token == undefined || req.query.openid == undefined){
+            res.end(err.err402());
+      }else{
+            user.tokenValid(req.query.openid, req.query.token).then(value => {
+                  if(value){
+                        return mysqlOp.getAllEmotionValue(req.query.openid);
+                  }else{
+                        res.end(err.err405());
+                  }
+            }).then(value => {
+                  if(!value)  return;
+                  const resData = {
+                        code: 100,
+                        message: 'success',
+                        data: value.info
+                  };
+
+                  res.end(JSON.stringify(resData));
+            })
+      }
+});
 // add feedback
 // test https://api.xumengli.cn/feedback/v0.1/add?openid=o7K0Z48OkwZi0LxTInXWGwdWlizM&message=hi&token=1558939295
 app.put('/feedback/v0.1/add', function(req, res){
