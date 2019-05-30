@@ -307,13 +307,65 @@ app.get('/reports/v0.1/get', function(req, res){
       }
 });
 
+// Get weekly data from Mon to Sun.
+// test https://api.xumeng.cn/reports/v0.1/weekly/get?openid=OPENID=token=TOKEN&from=FROM&to=TO
 app.get('/reports/v0.1/weekly/get', function(req, res){
-
+      var data = new Object();
+      data.code = 100;
+      data.message = "success";
+      data.data = {
+            weekly_data: {},
+            weekly_report: {}
+      };
+      if(req.query.openid == undefined || req.query.token == undefined || req.query.from == undefined || req.query.to == undefined)
+       res.end(err.err401());
+      else{
+          user.tokenValid(req.query.openid, req.query.token).then(value => {
+                if(!value){
+                      res.end(err.err405());
+                }
+                return mysqlOp.getWeeklyData(req.query.openid, req.query.query.from, req.query.query.to)
+          }).then((value) => {
+                if(!(value)) return;
+                data.data.weekly_data = value.info;
+                return mysqlOp.getWeeklyReport(req.query.openid, req.query.from, req.query.to);
+          }).then((value) => {
+                if(!value) return;
+                data.data.weekly_report = value.info[0];
+                res.end(JSON.stringify(data));
+          }).catch(e => {
+                res.end(err.err402());
+          })
+      }
 });
 
 app.get('/reports/v0.1/monthly/get', function(req, res){
-
+      if(req.query.openid == undefined || req.query.token == undefined || req.query.start){
+            res.end(err.err401()); 
+      }
 });
+
+app.get('/reports/v0.1/weekly/all/get', function(req, res){
+      if(req.query.openid == undefined || req.query.token == undefined){
+            res.end(err.err401()); 
+      }else{
+            user.tokenValid(req.query.openid, req.query.token).then(value => {
+                  if(!value){
+                        res.end(res.end(err.err405()));
+                        return null;
+                  }
+                  return mysqlOp.getWeeklyReports(req.query.openid);
+            }).then(value => {
+                  if(!value) return;
+                  const resData = {
+                        code : 100,
+                        message: 'success',
+                        data: value.info
+                  };
+                  res.end(JSON.stringify(resData));
+            })
+      }
+})
 
 app.get('/reports/v0.1/all/get', function(req, res){
 
